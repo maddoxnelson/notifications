@@ -1,0 +1,26 @@
+Put your message here. This will simulate Revere.
+<input id="input" placeholder="enter headline here"></input>
+<input id="url" placeholder="enter url here"></input>
+
+<button id="submit">Submit</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+<script>
+
+	function send_message_to_sw(msg){
+    	navigator.serviceWorker.controller.postMessage(msg);
+	}
+
+	$('#submit').on('click',function(){
+		var input = $('#input').val();
+		var url = $('#url').val();
+		console.log(input);
+
+		var obj = {
+			"headline" : input,
+			"link" : url
+		};
+		send_message_to_sw(obj);
+	});
+
+	
+</script>
